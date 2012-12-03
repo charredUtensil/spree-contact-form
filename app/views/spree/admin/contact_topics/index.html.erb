@@ -1,7 +1,7 @@
 <div class='toolbar'>
   <ul class='actions'>
     <li id="new_contact_topic_link">
-			<p><%= button_link_to t(:new_contact_topic), new_object_url, :icon => 'add' %></p>
+      <p><%= button_link_to t(:new_contact_topic), new_object_url, :icon => 'add' %></p>
     </li>
   </ul>
   <br class='clear' />
@@ -19,7 +19,6 @@
     </th>
   </tr>
   <% @contact_topics.each do |topic| %>
-    <%- locals = {:topic => topic} %>
     <tr id="<%= dom_id topic %>" data-hook="admin_contact_topics_index_rows">
       <td><%= topic.name %></td>
       <td><%= topic.emails %></td>
@@ -31,5 +30,3 @@
     </tr>
   <% end %>
 </table>
-
-

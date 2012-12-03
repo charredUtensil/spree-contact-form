@@ -13,27 +13,27 @@
       <div data-hook="contact_inside_form">
         <p>
           <%= f.label :topic_id, t("subject") %><br />
-          <%= f.collection_select :topic_id, @topics, :id, :name  %>  
+          <%= f.collection_select :topic_id, @topics, :id, :name  %>
         </p>
 
         <p>
           <%= f.label :name, t("name") %><br />
-          <%= f.text_field :name  %>  
+          <%= f.text_field :name  %>
         </p>
 
         <p>
           <%= f.label :email, t("email") %><br />
-          <%= f.text_field :email  %>  
+          <%= f.text_field :email  %>
         </p>
 
         <p>
           <%= f.label :order_number, t(:order_number) %> (<%= t('optional') %>)<br />
-          <%= f.text_field :order_number  %>  
+          <%= f.text_field :order_number  %>
         </p>
 
         <p>
           <%= f.label :message, t("message") %><br />
-          <%= f.text_area :message, :rows => 10  %>  
+          <%= f.text_area :message, :rows => 10  %>
         </p>
 
         <p><%= submit_tag t("send_message"), :class => 'button primary' %></p>
