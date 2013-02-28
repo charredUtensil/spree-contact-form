@@ -1,32 +1,40 @@
-<div class='toolbar'>
-  <ul class='actions'>
-    <li id="new_contact_topic_link">
-      <p><%= button_link_to t(:new_contact_topic), new_object_url, :icon => 'add' %></p>
-    </li>
-  </ul>
-  <br class='clear' />
-</div>
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
 
-<h1><%= t("contact_topics")%></h1>
+<% content_for :page_title do %>
+  <%= t(:contact_topics) %>
+<% end %>
 
-<div id="new_contact_topic"></div>
+<% content_for :page_actions do %>
+  <li>
+    <%= button_link_to t(:new_contact_topic), new_object_url, :icon => 'icon-plus', :id => 'admin_new_contact_topic_link' %>
+  </li>
+<% end %>
 
-<table class="index">
-  <tr data-hook='admin_contact_topic_index_headers'>
-    <th><%= t("name") %></th>
-    <th><%= t("emails") %></th>
-    <th data-hook='admin_contact_topic_index_header_actions'>
-    </th>
-  </tr>
-  <% @contact_topics.each do |topic| %>
-    <tr id="<%= dom_id topic %>" data-hook="admin_contact_topics_index_rows">
-      <td><%= topic.name %></td>
-      <td><%= topic.emails %></td>
-      <td class="actions" data-hook="admin_contact_topic_index_header_actions">
-        <%= link_to_edit topic  %>
-        &nbsp;
-        <%= link_to_delete topic  %>
-      </td>
-    </tr>
-  <% end %>
-</table>
+<% unless @contact_topics.any? %>
+  <div class="no-objects-found"><%= t(:no_contact_topics_defined)%></div>
+<% else %>
+  <table class="index" id="contact_topics_listing">
+    <colgroup>
+      <col style="width: 48%">
+      <col style="width: 40%">
+      <col style="width: 22%">
+    </colgroup>
+    <thead data-hook='admin_contact_topic_index_headers'>
+      <th><%= t("name") %></th>
+      <th><%= t("emails") %></th>
+      <th data-hook='admin_contact_topic_index_header_actions' class="actions"></th>
+    </thead>
+    <tbody class="align-center">
+      <% @contact_topics.each do |topic| %>
+        <tr id="<%= spree_dom_id topic %>" data-hook="admin_contact_topics_index_rows" class="<%= cycle('odd', 'even')%>">
+          <td><%= topic.name %></td>
+          <td><%= topic.emails %></td>
+          <td class="actions" data-hook="admin_contact_topic_index_header_actions">
+            <%= link_to_edit topic, :no_text => true  %>
+            <%= link_to_delete topic , :no_text => true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

@@ -1,17 +1,15 @@
-<%= render "spree/shared/error_messages", :target => f.object %>
+<div data-hook="admin_contact_topic_form_fields" class="row">
+  <div class="alpha four columns">
+    <%= f.field_container :name do %>
+      <%= f.label :name, t(:name) %>
+      <%= f.text_field :name, :class => 'fullwidth' %>
+    <% end %>
+  </div>
 
-<div data-hook="admin_contact_topic_form">
-
-  <%= f.field_container :name do %>
-    <%= f.label :name, t("name") %> <span class="required">*</span><br />
-    <%= f.text_field :name, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :name %>
-  <% end %>
-
-  <%= f.field_container :emails do %>
-    <%= f.label :emails, t("emails") %> (<%= t('comma_delimited') %>) <span class="required">*</span><br />
-    <%= f.text_field :emails, :class => 'fullwidth title'  %>
-    <%= f.error_message_on :emails %>
-  <% end %>
-
+  <div class="eight columns omega">
+    <%= f.field_container :emails do %>
+      <%= f.label :emails, t(:emails) %> <small>comma seperated</small>
+      <%= f.text_field :emails, :class => 'fullwidth' %>
+    <% end %>
+  </div>
 </div>
