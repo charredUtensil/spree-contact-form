@@ -23,6 +23,7 @@ module Spree
     end
     
     def spam?
-      params[:message][:filter].present? || params[:message][:filter].nil?
+      params[:filter].present? || params[:filter].nil?
+    end
 	end	
 end
