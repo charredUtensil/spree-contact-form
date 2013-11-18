@@ -1,6 +1,6 @@
 module Spree
   class Message < ActiveRecord::Base
-    attr_accessible :name, :email, :topic_id, :message, :order_number
+    #attr_accessible :name, :email, :topic_id, :message, :order_number
 
     validates :name, :message, :topic_id, :presence => true
 
