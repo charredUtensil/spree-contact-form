@@ -10,7 +10,7 @@ module Spree
     end
 
     def create
-      @message = Message.new(params[:message] || {}) unless spam?
+      @message = Message.new(params[:message].permit(:name, :email, :topic_id, :message, :order_number)) unless spam?
       if @message.save
         ContactMailer.message_email(@message).deliver unless spam?
         flash[:notice] = t('contact_thank_you')
