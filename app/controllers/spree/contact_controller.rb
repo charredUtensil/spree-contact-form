@@ -1,6 +1,9 @@
 module Spree
-	class ContactController < BaseController
+	class Spree::ContactController < Spree::StoreController
     before_filter :load_topics
+    
+    helper Spree::StoreHelper
+    helper Spree::BaseHelper
 
     def show
       @message = Message.new
